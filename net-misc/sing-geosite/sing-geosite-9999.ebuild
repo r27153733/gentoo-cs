@@ -45,11 +45,6 @@ src_compile() {
 }
 
 src_install() {
-	# Install license and documentation if they exist
-	[[ -f LICENSE ]] && dodoc LICENSE
-	[[ -f README.md ]] && dodoc README.md
-	[[ -f README ]] && dodoc README
-	
 	# Install rule sets if requested
 	if use rule-set && [[ -d "rule-set" ]]; then
 		insinto /usr/share/sing-geosite
