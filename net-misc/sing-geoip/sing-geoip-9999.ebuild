@@ -45,9 +45,6 @@ src_compile() {
 }
 
 src_install() {
-	# Install license and documentation
-	dodoc LICENSE README.md
-	
 	# Install rule sets if requested
 	if use rule-set; then
 		insinto /usr/share/sing-geoip
