@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>your-email@example.com</email>
+		<name>Your Name</name>
+	</maintainer>
+	<longdescription lang="en">
+		sing-geoip provides GeoIP rule sets and database files for sing-box
+		and other applications. It includes country-based IP address ranges
+		in both rule-set format and database format.
+	</longdescription>
+	<use>
+		<flag name="rule-set">Install rule-set format GeoIP data</flag>
+		<flag name="database">Install database format GeoIP data</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">SagerNet/sing-geoip</remote-id>
+	</upstream>
+</pkgmetadata>
