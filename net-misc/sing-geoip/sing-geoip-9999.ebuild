@@ -22,6 +22,8 @@ BDEPEND=">=dev-lang/go-1.18"
 
 REQUIRED_USE="|| ( rule-set database )"
 
+RESTRICT="network-sandbox"
+
 S="${WORKDIR}/${P}"
 
 src_unpack() {
@@ -38,12 +40,12 @@ src_compile() {
 	# Build the generator
 	ego build -v -ldflags "-s -w" .
 	
-	# Generate rule sets and database
+	# Generate rule sets and database with network access
 	NO_SKIP=true ./sing-geoip || die "Failed to generate geoip data"
 }
 
 src_install() {
-	# Install license
+	# Install license and documentation
 	dodoc LICENSE README.md
 	
 	# Install rule sets if requested
