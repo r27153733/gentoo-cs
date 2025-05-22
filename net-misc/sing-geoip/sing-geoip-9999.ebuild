@@ -14,7 +14,7 @@ HOMEPAGE="https://github.com/SagerNet/sing-geoip"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS=""
-IUSE="+rule-set +database"
+IUSE="+rule-set database"
 
 DEPEND=""
 RDEPEND="${DEPEND}"
