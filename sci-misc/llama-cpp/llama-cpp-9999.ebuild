@@ -70,6 +70,7 @@ src_configure() {
 		-DLLAMA_CURL=$(usex curl ON OFF)
 		-DGGML_CUDA=ON
 		-DCMAKE_CUDA_ARCHITECTURES="120"
+		-DCMAKE_CUDA_FLAGS="--compiler-bindir /usr/x86_64-pc-linux-gnu/gcc-bin/14"
 		-DBUILD_NUMBER="1"
 	)
 
