@@ -15,10 +15,6 @@ SLOT="0"
 KEYWORDS=""
 IUSE="+quic grpc +dhcp +wireguard +utls +acme +clash-api v2ray-api +gvisor tor +tailscale"
 
-RDEPEND="
-	acme? ( app-crypt/certbot )
-	tor? ( net-vpn/tor )
-"
 DEPEND="${RDEPEND}"
 
 src_unpack() {
@@ -45,7 +41,7 @@ src_compile() {
 	mytags=$(printf "%s," ${mytags[@]} | sed 's/,,*$//')
 
 	local VERSION
-	VERSION=$(go run ./cmd/internal/read_tag) || die "Failed to read version tag"
+	VERSION=$(go run ./cmd/internal/read_tag -nightly) || die "Failed to read version tag"
 
 	ego build -o sing-box -trimpath -tags "${mytags}" \
 		-ldflags "-s -w -X 'github.com/sagernet/sing-box/constant.Version=${VERSION}'" \
