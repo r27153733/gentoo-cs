@@ -55,12 +55,13 @@ src_compile() {
 }
 
 src_install() {
+	sed -i '/^User=sing-box$/d; /^StateDirectory=sing-box$/d' release/config/sing-box.service
+	sed -i '/^User=sing-box$/d; /^StateDirectory=sing-box$/d' release/config/sing-box@.service
+
 	dobin sing-box
 	insinto /etc/sing-box
 	newins release/config/config.json config.json.example
 	systemd_dounit release/config/sing-box{,@}.service
-	insinto /usr/lib/sysusers.d
-	newins release/config/sing-box.sysusers sing-box.conf
 	dobashcomp completions/sing-box
 	dofishcomp completions/sing-box.fish
 	dozshcomp completions/_sing-box
