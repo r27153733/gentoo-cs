@@ -47,10 +47,11 @@ src_compile() {
 		-ldflags "-s -w -X 'github.com/sagernet/sing-box/constant.Version=${VERSION}'" \
 		./cmd/sing-box
 
-	mkdir -p completions || die
-	./sing-box completion bash > completions/sing-box || die
-	./sing-box completion fish > completions/sing-box.fish || die
-	./sing-box completion zsh > completions/_sing-box || die
+	mkdir -v completions
+
+	./sing-box completion bash > completions/sing-box
+	./sing-box completion fish > completions/sing-box.fish
+	./sing-box completion zsh > completions/_sing-box
 }
 
 src_install() {
@@ -58,8 +59,7 @@ src_install() {
 	insinto /etc/sing-box
 	newins release/config/config.json config.json.example
 	systemd_dounit release/config/sing-box{,@}.service
-
-	newbashcomp completions/sing-box sing-box
+	dobashcomp completions/sing-box
 	dofishcomp completions/sing-box.fish
 	dozshcomp completions/_sing-box
 }
