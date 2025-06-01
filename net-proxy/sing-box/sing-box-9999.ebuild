@@ -44,8 +44,11 @@ src_compile() {
 	# 过滤空值并转换为逗号分隔的标签
 	mytags=$(printf "%s," ${mytags[@]} | sed 's/,,*$//')
 
+	local VERSION
+	VERSION=$(go run ./cmd/internal/read_tag) || die "Failed to read version tag"
+
 	ego build -o sing-box -trimpath -tags "${mytags}" \
-		-ldflags "-s -w -X 'github.com/sagernet/sing-box/constant.Version=${PV}'" \
+		-ldflags "-s -w -X 'github.com/sagernet/sing-box/constant.Version=${VERSION}'" \
 		./cmd/sing-box
 
 	mkdir -p completions || die
